@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'main', url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git', branch: 'main'
+                git url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git', branch: 'main'
             }
         }
         stage('Build') {
@@ -20,6 +20,6 @@ pipeline {
                 echo 'Deploying application...'
                
             }
-        }
-    }
+        }
+    }
 }
