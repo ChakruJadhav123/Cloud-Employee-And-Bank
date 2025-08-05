@@ -1,25 +1,28 @@
 pipeline {
     agent any
-    tools {
-        jdk 'jdk-17'
-        maven 'maven-3.8'
-    }
+
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git', branch: 'main'
+                git branch: 'main', url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git'
             }
         }
+
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh '''
+                mkdir -p bin
+                javac -d bin src/com/project//*.java
+                '''
             }
         }
-        stage('Deploy') {
+
+        stage('Package') {
             steps {
-                echo 'Deploying application...'
-               
+                sh '''
+                jar cvf CloudEMS-Banking.jar -C bin .
+                '''
             }
-        }
-    }
+        }
+    }
 }
