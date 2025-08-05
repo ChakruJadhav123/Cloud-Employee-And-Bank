@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git'
+                git url: 'main', url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git', branch: 'main'
             }
         }
         stage('Build') {
@@ -18,7 +18,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying application...'
-                // For now, just echo. Later we can add script to run app on EC2
+               
             }
         }
     }
