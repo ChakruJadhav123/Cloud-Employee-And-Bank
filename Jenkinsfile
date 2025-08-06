@@ -23,10 +23,10 @@ pipeline {
         stage('Checkout') {
             steps {
                 // The 'git' step checks out the specified branch from the URL.
-                // Jenkins automatically handles this when 'Pipeline script from SCM' is used,
-                // but explicitly defining it here ensures clarity and allows for more options.
-                git branch: 'main', url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git'
-                echo 'Source code checked out successfully from Git.'
+                // 'depth: 1' performs a shallow clone, fetching only the latest commit,
+                // which can significantly speed up the checkout process for large repositories.
+                git branch: 'main', url: 'https://github.com/ChakruJadhav123/Cloud-Employee-And-Bank.git', depth: 1
+                echo 'Source code checked out successfully with shallow clone.'
             }
         }
 
@@ -62,6 +62,8 @@ pipeline {
         always {
             echo 'Pipeline execution finished.'
             // Clean up the workspace to free up disk space.
+            // Consider removing or moving this if you want to leverage local Maven repository caching
+            // within the workspace for faster subsequent builds (see notes below).
             cleanup {
                 deleteDir()
             }
