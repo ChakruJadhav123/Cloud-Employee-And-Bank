@@ -1,8 +1,9 @@
 pipeline {
     agent any
     options {
-        // This option will make the pipeline fail immediately upon the first stage failure.
-        failFast true
+        // Removed 'failFast true' as it's not a valid top-level option.
+        // For sequential pipelines, a failing 'sh' command will mark the stage and build as failed.
+        // The 'post { failure { ... } }' block will then be triggered.
     }
 
     tools {
