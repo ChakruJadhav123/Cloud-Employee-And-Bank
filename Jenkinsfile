@@ -1,11 +1,15 @@
 pipeline {
     agent any
+    options {
+        // This option will make the pipeline fail immediately upon the first stage failure.
+        failFast true
+    }
 
     tools {
         // Ensure 'jdk-17' and 'maven-3.8' are configured in Jenkins' Global Tool Configuration
         // These names must exactly match your Jenkins tool configurations.
-        jdk 'jdk-17'   // Updated based on error suggestion
-        maven 'maven-3.8' // Updated based on error suggestion
+        jdk 'jdk-17'   // This name must match your Jenkins JDK configuration
+        maven 'maven-3.8' // This name must match your Jenkins Maven configuration
     }
 
     stages {
