@@ -2,9 +2,10 @@ pipeline {
     agent any
 
     tools {
-        // Ensure 'JDK 11' and 'Maven 3.8.1' are configured in Jenkins' Global Tool Configuration
-        jdk 'JDK 11'   // Replace with the name of your JDK installation in Jenkins
-        maven 'Maven 3.8.1' // Replace with the name of your Maven installation in Jenkins
+        // Ensure 'jdk-17' and 'maven-3.8' are configured in Jenkins' Global Tool Configuration
+        // These names must exactly match your Jenkins tool configurations.
+        jdk 'jdk-17'   // Updated based on error suggestion
+        maven 'maven-3.8' // Updated based on error suggestion
     }
 
     stages {
@@ -16,7 +17,7 @@ pipeline {
                 echo 'Code checked out from Git.'
             }
         }
-        
+
         stage('Build and Test') {
             steps {
                 // Use Maven to clean, compile, and package the project, including running tests.
@@ -34,7 +35,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         // Post-build actions for notification and cleanup
         always {
