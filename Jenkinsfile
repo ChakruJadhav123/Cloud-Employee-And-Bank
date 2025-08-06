@@ -1,9 +1,9 @@
 pipeline {
     agent any
     options {
-        // Removed 'failFast true' as it's not a valid top-level option.
-        // For sequential pipelines, a failing 'sh' command will mark the stage and build as failed.
-        // The 'post { failure { ... } }' block will then be triggered.
+        // Added timestamps() to ensure the options block is not empty.
+        // This will add timestamps to each line of the console output, which is useful for debugging.
+        timestamps()
     }
 
     tools {
